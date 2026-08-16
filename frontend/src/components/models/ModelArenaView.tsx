@@ -152,52 +152,97 @@ export const ModelArenaView = ({
       </div>
 
       {/* 2. REAL-TIME SUPABASE DATABASE PERSISTENCE STATUS BANNER */}
-      <div className="luxury-card p-4 sm:p-5 border border-emerald-500/30 dark:border-emerald-500/20 bg-emerald-500/5 dark:bg-emerald-950/20">
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-emerald-500/20">
-          <div className="flex items-center gap-2.5">
-            <div className="w-8 h-8 rounded-xl bg-emerald-500/15 flex items-center justify-center text-emerald-600 dark:text-emerald-400 shrink-0">
-              <Database className="w-4 h-4" />
+      <div 
+        className="luxury-card p-4 sm:p-5"
+        style={{ 
+          background: 'var(--bg-surface)', 
+          borderColor: 'var(--border-medium)' 
+        }}
+      >
+        <div 
+          className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b"
+          style={{ borderColor: 'var(--border-subtle)' }}
+        >
+          <div className="flex items-center gap-3">
+            <div 
+              className="w-9 h-9 rounded-xl flex items-center justify-center shrink-0"
+              style={{ background: 'var(--accent-glow)', color: 'var(--accent)' }}
+            >
+              <Database className="w-5 h-5" />
             </div>
             <div>
-              <div className="flex items-center gap-2">
-                <span className="text-xs font-bold" style={{ color: 'var(--text-primary)' }}>
+              <div className="flex items-center gap-2 flex-wrap">
+                <span className="text-xs sm:text-sm font-black tracking-tight" style={{ color: 'var(--text-primary)' }}>
                   Base de Datos Supabase (PostgreSQL)
                 </span>
-                <span className="px-2 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider bg-emerald-500 text-white flex items-center gap-1">
-                  <CheckCircle2 className="w-3 h-3" />
+                <span className="px-2 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300 border border-emerald-300 dark:border-emerald-800 flex items-center gap-1">
+                  <CheckCircle2 className="w-3 h-3 text-emerald-600 dark:text-emerald-400" />
                   Conectado & Sincronizado
                 </span>
               </div>
-              <p className="text-[11px] mt-0.5" style={{ color: 'var(--text-secondary)' }}>
-                Persistencia activa: Todas las predicciones se guardan con hash inmutable pre-sorteo.
+              <p className="text-[11px] mt-0.5 font-medium" style={{ color: 'var(--text-secondary)' }}>
+                Persistencia en la nube activa: Las predicciones se registran con hash inmutable pre-sorteo.
               </p>
             </div>
           </div>
 
           <div className="flex items-center gap-2 shrink-0">
-            <span className="text-[10px] font-mono px-2.5 py-1 rounded-lg border bg-white/60 dark:bg-zinc-900/60 font-semibold" style={{ borderColor: 'var(--border-medium)', color: 'var(--text-secondary)' }}>
-              SHA-256 Anti-Leakage: ACTIVO
+            <span 
+              className="text-[10px] font-mono px-2.5 py-1 rounded-lg border font-bold"
+              style={{ 
+                background: 'var(--bg-surface-alt)', 
+                borderColor: 'var(--border-medium)', 
+                color: 'var(--text-primary)' 
+              }}
+            >
+              SHA-256 Anti-Leakage: <span className="text-emerald-600 dark:text-emerald-400">ACTIVO</span>
             </span>
           </div>
         </div>
 
         {/* Telemetry Counter Badges */}
         <div className="grid grid-cols-3 gap-2 sm:gap-4 pt-3 text-center">
-          <div className="p-2 sm:p-2.5 rounded-xl bg-white/70 dark:bg-zinc-900/60 border" style={{ borderColor: 'var(--border-subtle)' }}>
-            <span className="text-[10px] font-semibold block" style={{ color: 'var(--text-tertiary)' }}>Predicciones Guardadas</span>
-            <span className="text-sm sm:text-base font-black font-mono text-emerald-600 dark:text-emerald-400">
+          <div 
+            className="p-2.5 sm:p-3 rounded-xl border"
+            style={{ 
+              background: 'var(--bg-surface-alt)', 
+              borderColor: 'var(--border-medium)' 
+            }}
+          >
+            <span className="text-[11px] font-semibold block" style={{ color: 'var(--text-secondary)' }}>
+              Predicciones Guardadas
+            </span>
+            <span className="text-sm sm:text-lg font-black font-mono text-emerald-600 dark:text-emerald-400">
               {totalDbPredictions} en DB
             </span>
           </div>
-          <div className="p-2 sm:p-2.5 rounded-xl bg-white/70 dark:bg-zinc-900/60 border" style={{ borderColor: 'var(--border-subtle)' }}>
-            <span className="text-[10px] font-semibold block" style={{ color: 'var(--text-tertiary)' }}>Sorteos Programados</span>
-            <span className="text-sm sm:text-base font-black font-mono" style={{ color: 'var(--text-primary)' }}>
+
+          <div 
+            className="p-2.5 sm:p-3 rounded-xl border"
+            style={{ 
+              background: 'var(--bg-surface-alt)', 
+              borderColor: 'var(--border-medium)' 
+            }}
+          >
+            <span className="text-[11px] font-semibold block" style={{ color: 'var(--text-secondary)' }}>
+              Sorteos Programados
+            </span>
+            <span className="text-sm sm:text-lg font-black font-mono" style={{ color: 'var(--text-primary)' }}>
               {totalDbSorteos} sorteos
             </span>
           </div>
-          <div className="p-2 sm:p-2.5 rounded-xl bg-white/70 dark:bg-zinc-900/60 border" style={{ borderColor: 'var(--border-subtle)' }}>
-            <span className="text-[10px] font-semibold block" style={{ color: 'var(--text-tertiary)' }}>Resultados Verificados</span>
-            <span className="text-sm sm:text-base font-black font-mono text-indigo-600 dark:text-indigo-400">
+
+          <div 
+            className="p-2.5 sm:p-3 rounded-xl border"
+            style={{ 
+              background: 'var(--bg-surface-alt)', 
+              borderColor: 'var(--border-medium)' 
+            }}
+          >
+            <span className="text-[11px] font-semibold block" style={{ color: 'var(--text-secondary)' }}>
+              Resultados Verificados
+            </span>
+            <span className="text-sm sm:text-lg font-black font-mono text-indigo-600 dark:text-indigo-400">
               {totalDbResultados} oficiales
             </span>
           </div>
