@@ -151,6 +151,7 @@ export function App() {
           evaluations={evaluations}
           predictions={activePredictions}
           lotteries={lotteries}
+          health={health}
         />
       )}
 
